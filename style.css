@@ -10,16 +10,17 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 937px;
-  //background: #60b1d1;  
-  /*#6D4DFF 0%, #504DFF 54%*/
+  overflow: hidden;
+  /*background: #60b1d1;  
+  #6D4DFF 0%, #504DFF 54%*/
 }
 
 .inner-container {
   display: flex; 
   flex-direction: column;
   justify-content: center;
-  height: 937px;
-  //background: #d18060;
+  height: 937px; 
+  /*background: #d18060;*/
 }
 
 body h1 {
@@ -42,14 +43,52 @@ body h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 50px;
   color: white;
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 
-.bar {
-  margin-top: 10px;
+.head-h3 {
+  font-size: 30px;
+  position: relative;
+  left: 234px;
+}
+
+.head-h4 {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: white; 
+  position: relative;
+  left: 750px;
+}
+
+body a {
+  text-decoration: none;
+  color: #2d65ef;
+}
+
+body a:hover {
+  color: #d18060;
+}
+
+.bar:hover {
+  fill: #60b1d1;
 }
 
 rect {
   fill: beige;
+}
+
+.x-axis {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.y-axis {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
 }
 
 .color-blue {
