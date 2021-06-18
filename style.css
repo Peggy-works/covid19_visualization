@@ -44,10 +44,18 @@ body h3 {
   color: white;
 }
 
+.bar {
+  margin-top: 10px;
+}
+
+rect {
+  fill: beige;
+}
+
 .color-blue {
   background: #60b1d1;
 }
 
 .color-brown {
   background: #d18060;
-}
+} 
