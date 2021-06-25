@@ -11,6 +11,14 @@ $(document).ready(function(){
   // Width of 'svg'. 
   var svg_width = parseInt($(document).width());
 
+  // Creating tooltip w/ div
+  var tooltip = d3.select('.inner-container')
+    .append('div')//
+    .attr('class', 'tooltip')
+    .style('position', 'absolute')
+    .style('visibility', 'hidden')
+    .text('Im something'); // style('opacity', 0)
+
   //Setting dimensions for svg, appending "g". 
   var svg = d3.select('svg')
     .attr('width', svg_width) //width
@@ -77,28 +85,30 @@ $(document).ready(function(){
       .attr("y", d => y(d.state_name))
       .attr("x", x(0))
       .attr('height', 10)
-      .attr('width', d => x(d.deaths)); 
+      .attr('width', d => x(d.deaths))
+      .attr('data-deaths', d => d.deaths)
+      .attr('data-state', d => d.state_name); 
 
     // Adding appropriate state_name to each rect
     var rect = d3.selectAll('rect');
     rect.each(function(d){
-      this.classList.add(d.state_name.split(" ").join(""));
-    })
+      this.classList.add(d.state_name.split(" ").join("")); 
+    }) 
+    $('rect').mouseover(function(d){ 
+      // Deriving values from data-state, data-deaths html rect attributes
+      var $state_name = $(this).data("state");
+      var $deaths = $(this).data("deaths");
+            
+      //Adding top, left to tooltip, adding state name and text to tooltip
+      tooltip.style('left', event.pageX + 'px')
+        .style('top', event.pageY + 'px')
+        .style('visibility', 'visible')
+        .html("<p class='tooltip-text'>State: "+ $state_name + '<br>Total deaths: ' + $deaths + '</p>'); 
+    });
     
-    // Implementing tooltip to show data if client hovers bars.
-    $('.bar').hover(function(){
-      console.log("Hovering over, " + $(this).attr('class'));
-      var class_ = $(this).attr('class');
-      class_ = class_.substr(class_.indexOf(" ") + 1);
-      console.log(class_ + ", " + class_.length);
+    //Hide if mouseout of rect
+    $('rect').mouseout(function(){
+      tooltip.style('visibility', 'hidden');
     });
-  })   
-  /*setTimeout(function(){
-    $('.bar').hover(function(){
-      console.log("Hovering over, " + $(this).attr('class'));
-      var class_ = $(this).attr('class');
-      class_ = class_.substr(class_.indexOf(" ") + 1);
-      console.log(class_ + ", " + class_.length);
-    });
-  }, 300);*/
+  })    
 });
