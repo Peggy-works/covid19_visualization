@@ -6,112 +6,128 @@ body {
 * {padding: 0; margin: 0;}
 
 .head-container {
-display: flex; 
-flex-direction: column;
-justify-content: center;
-height: 937px;
-overflow: hidden;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  height: 937px;
+  overflow: hidden;
 /*background: #60b1d1;  
 #6D4DFF 0%, #504DFF 54%*/
 }
 
 .inner-container {
-display: flex; 
-flex-direction: column;
-justify-content: center;
-height: 937px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  height: 937px; 
 /*background: #d18060;*/
 }
 
-body h1 {
-font-family: 'Poppins', sans-serif;
-font-size: 100px; 
-margin-top: 0%;
-text-align: center;
-color: white;
+.container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  height: 937px; 
 }
 
-body h2 {
-font-family: 'Poppins', sans-serif;
-font-size: 50px;
-margin-top: 0%;
-margin-left: 18%;
-color: white;
+#head-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 100px; 
+  margin-top: 0%;
+  text-align: center;
+  color: white;
 }
 
-body h3 {
-font-family: 'Poppins', sans-serif;
-font-size: 50px;
-color: white;
-position: relative;
-top: 0px;
-left: 0px;
+#head-h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 50px;
+  margin-top: 0%;
+  margin-left: 18%;
+  color: white;
 }
 
-.head-h3 {
-font-size: 30px;
-position: relative;
-left: 234px;
+#head-h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  color: white;
+  position: relative;
+  top: 0px;
+  left: 234px;
+} 
+
+#head-h4 {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: white; 
+  position: relative;
+  left: 750px;
 }
 
-.head-h4 {
-font-size: 20px;
-font-family: 'Poppins', sans-serif;
-color: white; 
-position: relative;
-left: 750px;
+#graphs-title-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 50px;
+  color: white;
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 
 body a {
-text-decoration: none;
-color: #2d65ef;
+  text-decoration: none;
+  color: #2d65ef;
 }
 
 body a:hover {
-color: #d18060;
+  color: #d18060;
 }
 
 .bar:hover {
-fill: #60b1d1;
+  fill: #60b1d1;
 }
 
 rect {
-fill: beige;
+  fill: beige;
 }
 
 .x-axis {
-color: white;
-font-family: 'Poppins', sans-serif;
-font-size: 14px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
 }
 
 .y-axis {
-color: white;
-font-family: 'Poppins', sans-serif;
-font-size: 14px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
 }
 
 .tooltip {
-width: 160px;
-height: 50px;
-background: #1485b3;	
-border: 2px solid white;
-border-radius: 20px;
-color: white;
-opacity: .9;
+  width: 160px;
+  height: 50px;
+  background: #1485b3;	
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  opacity: .9;
 }
 
 .tooltip-text {
-position: relative;
-left: 7px;
-top: 5px;
+  position: relative;
+  left: 7px;
+  top: 5px;
+}
+
+.states {
+  /*/fill: #adf6b2;*/
+  stroke: black;
+  stroke-width: 0.4;
 }
 
 .color-blue {
-background: #60b1d1;
+  background: #60b1d1;
 }
 
 .color-brown {
-background: #d18060;
+  background: #d18060;
 }  
 

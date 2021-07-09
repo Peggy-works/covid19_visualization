@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
     <script src="jquery-3.6.0.min.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,18 +14,22 @@
   </head>
   <body>
     <div class="head-container">
-      <h1 class='head-text'>COVID19_VISUALIZATION</h1>
-      <h2 class='head-h2'>A website made by someone on the internet</h2>
-      <h3 class='head-h3'>Taking some simple data from covid19 and using various d3 graphs to display the same data</h3>
-      <h4 class="head-h4">for those interested about the data <a href="NYT_covid19_deaths.csv" download="NYT_covid19_deaths.csv">link</a></h4>
+      <h1 id='head-text'>COVID19_VISUALIZATION</h1>
+      <h2 id='head-h2'>A website made by someone on the internet</h2>
+      <h3 id='head-h3'>Taking some simple data from covid19 and using various d3 graphs to display the same data</h3>
+      <h4 id="head-h4">for those interested about the data <a href="NYT_covid19_deaths.csv" download="NYT_covid19_deaths.csv">link</a></h4>
     </div> 
     <div class="inner-container">
-      <h3>Horizontal Bar Graph</h3>
-      <svg> 
+      <h3 id='graphs-title-text'>Horizontal Bar Graph</h3>
+      <svg id='horizontal-graph'> 
       </svg>
-      <div id="total_deaths"</div>
+      <div id="total_deaths"></div>
       <!--<img src="some_random.jpg" class="responsive-image">-->
     </div> 
+    <div class="container" id="second-graph">
+        <h2 id='graphs-title-text'>Map-Graph</h2>
+        <svg id='map-graph'></svg>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
