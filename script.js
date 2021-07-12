@@ -38,7 +38,7 @@ $(document).ready(function(){
   
   //Creating map projection
   var projection = d3.geoAlbersUsa()
-    .translate([svg_width/2.2, svg_height/2.5])
+    .translate([svg_width/2.2, svg_height/2.2])
     .scale([1500]);
 
   //Creating path
@@ -162,11 +162,11 @@ $(document).ready(function(){
           }
         }
       }
+
+      // Sorting data
       var d_sorted = data.sort(function(a, b){  
         return d3.descending(parseInt(a.deaths), parseInt(b.deaths))
-      })  
-
-      console.log("we r here" + ", "+ d_sorted[0].deaths + ", " + d_sorted[0].state_name);
+      })   
       
       //color 
       var color = d3.scaleLinear()
@@ -188,7 +188,7 @@ $(document).ready(function(){
       * Added a legend but its not up to snuff figure this out tomorrrow.
       */
       svg_map.append('g')
-        .attr('transform', 'translate(200,-35)')
+        .attr('transform', 'translate(200,-15)')
         .call(legend);
 
       svg_map.selectAll(".states")
@@ -215,6 +215,7 @@ $(document).ready(function(){
         tooltip_map.style("left", event.pageX + "px")
           .style('top', event.pageY + "px")
           .style("visibility", 'visible')
+          .style('background', '#2eb08b')
           .html("<p class='tooltip-text'>State: " + state_n + '<br>Total deaths: ' + deaths_t + '</p>');
       });
 
