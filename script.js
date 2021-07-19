@@ -27,6 +27,13 @@ $(document).ready(function(){
     .attr('class', 'tooltip')
     .style('position', 'absolute')
     .style('visibility', 'hidden'); // style('opacity', 0)
+
+  // Creating tooltip for pie-chart
+  var tooltip_pie = d3.select("#third-graph")
+    .append('div')
+    .attr('class', 'tooltip')
+    .style('position', 'absolute')
+    .style('visibility', 'hidden');
     
   //Setting dimensions for svg, appending "g". 
   var svg = d3.select('#horizontal-graph')
@@ -51,7 +58,27 @@ $(document).ready(function(){
     .attr("height", svg_height)
     .append('g')
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); 
- 
+
+  //Getting svg for pie chart
+  var svg_pie_chart = d3.select("#pie-graph")
+    .attr("width", svg_width)
+    .attr("height", svg_height)
+    .append('g').attr("transform", "translate(" + svg_width/2 + "," + 450 + ")");
+  
+  var radius = Math.min(540,540)/1.5;
+
+  var pie = d3.pie()
+    .sort(null)
+    .value(function(d) { return d.deaths;});
+
+  var arc = d3.arc() 
+    .innerRadius(0)
+    .outerRadius(Math.min(540,540)/1.5); 
+
+  var label = d3.arc()
+    .outerRadius(radius + 115)
+    .innerRadius(radius - 40);
+
   // Changing color scheme based on where we at in the webpage.
   $(window).scroll(function(event){  
     var $window = $(window);
@@ -230,4 +257,69 @@ $(document).ready(function(){
       }*/
     }); 
   });
+  /**
+ * Will be doing a pie chart instead
+ */
+  d3.csv(csv_file).then(function(data){
+    /*for (var i = 0; i < data.length; i++){
+      console.log(data[i]);
+    }*/ 
+    /**
+     * Not doing treemap will instead do --> pie chart 
+     */
+    // Sorting data
+    var d_sorted = data.sort(function(a, b){  
+      return d3.descending(parseInt(a.deaths), parseInt(b.deaths))
+    })   
+
+    //Color scale
+    var color = d3.scaleLinear()
+      .domain([0, d_sorted[0].deaths])
+      .range(["white", "#00ffb3"]);
+    
+    var getAngle = function (d) {
+      return (180 / Math.PI * (d.startAngle + d.endAngle) / 2 - 270);
+    };
+
+    svg_pie_chart.selectAll('.arc')
+      .data(pie(data))
+      .enter() 
+      .append('g')
+      .append('path') 
+      .attr('class', 'arc') 
+      .style('fill', d => color(d.data.deaths))
+      .attr('d', arc)
+      .attr('data-deaths', d => d.data.deaths)
+      .attr('data-state', d => d.data.state_name);
+
+      svg_pie_chart.selectAll('g')
+      .append("text")
+      .attr("class", 'pie-text')
+      .attr("text-anchor", 'middle')
+      .attr("transform" , function(d) { return "translate(" + label.centroid(d) + ")"  +
+            "rotate(" + getAngle(d) + ")"; }) 
+      .attr('dy', '0.35em')
+      .text(d => d.data.state_name); 
+
+    //Add tooltip to states when hovered
+    $('path').mouseover(function(d){
+      // Dreiving values from data-state, data-deaths 
+      var state_n = $(this).data('state');
+      var deaths_t = $(this).data('deaths');
+
+      // Adding tooltip to <path> states
+      tooltip_pie.style("left", event.pageX + "px")
+        .style('top', event.pageY + "px")
+        .style("visibility", 'visible')
+        .style('background', '#2eb08b')
+        .html("<p class='tooltip-text'>State: " + state_n + '<br>Total deaths: ' + deaths_t + '</p>');
+    });
+
+    // If state not hovered hide tooltip
+    $('path').mouseout(function(){
+      tooltip_pie.style('visibility', 'hidden');
+    }); 
+  });
+  
+
 });

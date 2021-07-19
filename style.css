@@ -123,6 +123,26 @@ rect {
   stroke-width: 0.4;
 }
 
+.map-text {
+  top: 22px;
+}
+
+text.label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+}
+
+.arc{
+  stroke: #d18060;
+  stroke-width: 0.5;
+}
+
+.pie-text {
+  fill: rgb(255, 248, 146);
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+}
+
 .color-blue {
   background: #60b1d1;
 }
