@@ -73,10 +73,10 @@ $(document).ready(function(){
 
   var arc = d3.arc() 
     .innerRadius(0)
-    .outerRadius(Math.min(540,540)/1.5); 
+    .outerRadius(Math.min(540,540)/1.6); 
 
   var label = d3.arc()
-    .outerRadius(radius + 115)
+    .outerRadius(radius + 75)
     .innerRadius(radius - 40);
 
   // Changing color scheme based on where we at in the webpage.
